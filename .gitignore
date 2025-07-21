@@ -1,0 +1,79 @@
+# Build results
+bin/
+obj/
+[Ll]og/
+*.log
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+.vscode/*
+
+# Rider settings
+.idea/
+
+# ASP.NET Core environment files
+appsettings.*.json
+secrets.json
+
+# DotCover is a code coverage tool
+*.dotCover
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+# Ignore NuGet restore results
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Auto-generated files
+*.g.cs
+*.g.i.cs
+Generated_Code/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Publish directory
+publish/
+wwwroot/
+
+# Entity Framework Migrations snapshot
+Migrations/*Snapshot.cs
+
+# JetBrains Rider working folder
+.idea/
+
+# Windows image thumbnail cache
+Thumbs.db
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# OS-specific
+.DS_Store
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Test results
+TestResults/
+
+# Local tools
+.localtools/
+
+# Global tools
+.tools/
+
+# dotenv files (if used for local secrets)
+.env
+.env.*
