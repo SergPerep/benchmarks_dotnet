@@ -11,4 +11,9 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.15.2" />
   </ItemGroup>
 
+  <ItemGroup>
+  <EmbeddedResource Include="Inputs/first_names.csv" />
+  <EmbeddedResource Include="Inputs/string_concats.csv" />
+</ItemGroup>
+
 </Project>
