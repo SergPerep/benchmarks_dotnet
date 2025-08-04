@@ -8,7 +8,7 @@ namespace Benchmarks.Case
     {
         private Birth[] births;
         private List<string> names;
-        private const int dataSetSize = 100000;
+        private const int dataSetSize = 1_000_000;
         private Random random = new Random();
         [GlobalSetup]
         public void Setup()
@@ -37,9 +37,10 @@ namespace Benchmarks.Case
         public List<string> WithExtMethods()
         {
             return births
-                .Where(b => b.sex == Sex.Female && b.date.Year == 2024)
+                .Where(b => b.sex == Sex.Female && b.date.Year == 2024 && b.date.Month == 9)
                 .Select(b => b.name)
                 .Distinct()
+                .OrderBy(name => name)
                 .ToList();
         }
         [Benchmark]
@@ -49,10 +50,11 @@ namespace Benchmarks.Case
             HashSet<string> seen = new HashSet<string>();
             foreach (Birth b in births)
             {
-                if (b.sex != Sex.Female || b.date.Year != 2024) continue;
+                if (b.sex != Sex.Female || b.date.Year != 2024 || b.date.Month != 9)
+                    continue;
                 if (seen.Add(b.name)) uniqueNames.Add(b.name);
-                // uniqueNames.Add(b.name);
             }
+            uniqueNames.Sort();
             return uniqueNames;
         }
 
@@ -85,7 +87,8 @@ namespace Benchmarks.Case
         public enum Sex
         {
             Male,
-            Female
+            Female,
+            Intersex
         }
     }
 }

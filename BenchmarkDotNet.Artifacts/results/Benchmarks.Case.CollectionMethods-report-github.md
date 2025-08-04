@@ -8,7 +8,7 @@ Intel Core i5-3210M CPU 2.50GHz (Ivy Bridge), 1 CPU, 4 logical and 2 physical co
 
 
 ```
-| Method            | Mean       | Error    | StdDev   | Median     |
-|------------------ |-----------:|---------:|---------:|-----------:|
-| WithExtMethods    | 1,029.6 μs | 11.66 μs | 10.34 μs | 1,028.5 μs |
-| WithoutExtMethods |   934.5 μs | 18.22 μs | 44.35 μs |   913.7 μs |
+| Method            | Mean     | Error   | StdDev  |
+|------------------ |---------:|--------:|--------:|
+| WithExtMethods    | 819.7 μs | 4.58 μs | 3.82 μs |
+| WithoutExtMethods | 732.9 μs | 4.93 μs | 4.37 μs |

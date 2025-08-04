@@ -30,12 +30,18 @@ namespace Benchmarks.Cases
         [Benchmark]
         public int TotalAmountArray()
         {
-            return transactionArray.Aggregate(0, (total, tr) => total + tr.amount);
+            int totalAmount = 0;
+            foreach (Transaction tr in transactionArray)
+                totalAmount += tr.amount;
+            return totalAmount;
         }
         [Benchmark]
         public int TotalAmountList()
         {
-            return transactionList.Aggregate(0, (total, tr) => total + tr.amount);
+            int totalAmount = 0;
+            foreach (Transaction tr in transactionList)
+                totalAmount += tr.amount;
+            return totalAmount;
         }
 
         public string GenAccountNumber()

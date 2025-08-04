@@ -8,10 +8,18 @@ using Benchmarks.Case;
 using Benchmarks.Cases;
 
 
-// var caseOne = new ArrayAndList();
+// var caseOne = new CollectionMethods();
 // caseOne.Setup();
-// Debug.WriteLine(caseOne.TotalAmountArray());
-// Debug.WriteLine(caseOne.TotalAmountList());
+// Debug.WriteLine("WithExtMethods:");
+// foreach (string name in caseOne.WithExtMethods())
+// {
+//     Debug.WriteLine(name);
+// }
+// Debug.WriteLine("WithoutExtMethods:");
+// foreach (string name in caseOne.WithoutExtMethods())
+// {
+//     Debug.WriteLine(name);
+// }
 
 // foreach (var name in Assembly.GetExecutingAssembly().GetManifestResourceNames())
 // {
