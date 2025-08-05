@@ -13,7 +13,7 @@ namespace Benchmarks.Cases
         private int selectedYear;
         private Sex selectedSex;
 
-        private const int dataSetSize = 1000000;
+        private const int dataSetSize = 1_000_000;
         [GlobalSetup]
         public void Setup()
         {
@@ -28,7 +28,7 @@ namespace Benchmarks.Cases
                 {
                     name = GenRandomName(),
                     sex = GenRandomSex(),
-                    date = GenRandomDate(2013, 2025)
+                    date = GenRandomDate(2020, 2025)
                 };
             }
 
@@ -50,12 +50,12 @@ namespace Benchmarks.Cases
         [Benchmark]
         public Birth[] IterateCollection()
         {
-            return births.Where(b => b.sex == selectedSex && b.date.Year == selectedYear).ToArray();
+            return births.Where(b => b.sex == selectedSex && b.date.Year == selectedYear && b.date.Month == 9).ToArray();
         }
         [Benchmark]
         public Birth[] SearchViaDictionary()
         {
-            return birthsByYear[selectedYear].Where(b => b.sex == selectedSex).ToArray();
+            return birthsByYear[selectedYear].Where(b => b.sex == selectedSex && b.date.Month == 9).ToArray();
         }
 
         public Sex GenRandomSex()
