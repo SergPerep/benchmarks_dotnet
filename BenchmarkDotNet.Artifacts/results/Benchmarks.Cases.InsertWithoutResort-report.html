@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>Benchmarks.Cases.InsertWithoutResort-20250721-092915</title>
+<title>Benchmarks.Cases.InsertWithoutResort-20250805-203922</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -15,18 +15,19 @@
 <pre><code>
 BenchmarkDotNet v0.15.2, Linux Ubuntu 24.04.2 LTS (Noble Numbat)
 Intel Core i5-3210M CPU 2.50GHz (Ivy Bridge), 1 CPU, 4 logical and 2 physical cores
-.NET SDK 8.0.117
-  [Host]     : .NET 8.0.17 (8.0.1725.26602), X64 RyuJIT AVX
-  DefaultJob : .NET 8.0.17 (8.0.1725.26602), X64 RyuJIT AVX
+.NET SDK 8.0.118
+  [Host]     : .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX
+  Job-CNUJVU : .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX
 </code></pre>
-<pre><code></code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
 
 <table>
-<thead><tr><th>Method     </th><th>Mean </th><th>Error</th><th>StdDev</th><th>Median</th>
+<thead><tr><th>Method             </th><th>Mean     </th><th>Error  </th><th>StdDev </th>
 </tr>
-</thead><tbody><tr><td>ListWithResort</td><td>4,105.08 ms</td><td>111.963 ms</td><td>310.248 ms</td><td>4,022.20 ms</td>
-</tr><tr><td>ListWithoutResort</td><td>29.36 ms</td><td>0.560 ms</td><td>0.524 ms</td><td>29.24 ms</td>
-</tr><tr><td>WithSortedSet</td><td>2,685.27 ms</td><td>113.483 ms</td><td>323.773 ms</td><td>2,580.69 ms</td>
+</thead><tbody><tr><td>WithResort</td><td>3,745,282.12 &mu;s</td><td>23,668.768 &mu;s</td><td>20,981.746 &mu;s</td>
+</tr><tr><td>WithBinarySearchAndInsert</td><td>5,204.01 &mu;s</td><td>102.536 &mu;s</td><td>225.069 &mu;s</td>
+</tr><tr><td>WithSortedSet</td><td>42.60 &mu;s</td><td>1.166 &mu;s</td><td>3.211 &mu;s</td>
 </tr></tbody></table>
 </body>
 </html>

@@ -5,47 +5,71 @@ namespace Benchmarks.Cases
 {
     public class InsertWithoutResort
     {
-        private static Random _random = new Random();
-        private List<string> _originalData = new List<string>();
+        private static Random _random = new();
+        public List<string> foodList = [];
+        // [Params([1_000_000, 100_000, 10_000, 1_000])]
+        public int n = 1_000_000;
+        private List<string> _original_data = [];
+        private const string itemToAdd = "Almonds";
+        public SortedSet<string> foodSortedSet = [];
 
         [GlobalSetup]
-        public void Setup()
+        public void GlobalSetup()
         {
-            for (int i = 0; i < 1000000; i++)
+            for (int i = 0; i < n; i++)
             {
-                _originalData.Add(GenerateString(10));
+                _original_data.Add(GenerateString(10));
             }
-            _originalData.Sort();
+            _original_data.Sort();
+        }
+        [IterationSetup]
+        public void IterationSetup()
+        {
+            foodList = [.. _original_data];
+        }
+
+        [IterationCleanup]
+        public void IterationCleanup()
+        {
+            foodList.Clear();
+            foodSortedSet.Clear();
+        }
+
+        [IterationSetup(Target = nameof(WithSortedSet))]
+        public void IterationSetupWithSortedSet()
+        {
+            foodSortedSet = [.. _original_data]; 
+        }
+
+        [GlobalCleanup]
+        public void GlobalCleanup()
+        {
+            _original_data.Clear();
+        }
+
+        [Benchmark]
+        public List<string> WithResort()
+        {
+            foodList.Add(itemToAdd);
+            foodList.Sort();
+            return foodList;
         }
         [Benchmark]
-        public List<string> ListWithResort()
+        public List<string> WithBinarySearchAndInsert()
         {
-            List<string> foods = new(_originalData);
-            foods.Add("Almonds");
-            foods.Sort();
-            return foods;
-        }
-        [Benchmark]
-        public List<string> ListWithoutResort()
-        {
-            List<string> foods = new(_originalData);
-            string item = "Almonds";
-            int index = foods.BinarySearch(item);
+            int index = foodList.BinarySearch(itemToAdd);
             if (index < 0)
             {
                 index = ~index;
-                foods.Insert(index, item);
+                foodList.Insert(index, itemToAdd);
             }
-        
-            return foods;
+            return foodList;
         }
         [Benchmark]
         public SortedSet<string> WithSortedSet()
         {
-            SortedSet<string> foods = new(_originalData);
-            string item = "Almonds";
-            foods.Add(item);
-            return foods;
+            foodSortedSet.Add(itemToAdd);
+            return foodSortedSet;
         }
 
         public static string GenerateString(int length)

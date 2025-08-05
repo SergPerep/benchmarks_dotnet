@@ -8,22 +8,15 @@ using Benchmarks.Case;
 using Benchmarks.Cases;
 
 
-// var caseOne = new CollectionMethods();
+// var caseOne = new InsertWithoutResort();
 // caseOne.Setup();
-// Debug.WriteLine("WithExtMethods:");
-// foreach (string name in caseOne.WithExtMethods())
-// {
-//     Debug.WriteLine(name);
-// }
-// Debug.WriteLine("WithoutExtMethods:");
-// foreach (string name in caseOne.WithoutExtMethods())
-// {
-//     Debug.WriteLine(name);
-// }
-
-// foreach (var name in Assembly.GetExecutingAssembly().GetManifestResourceNames())
-// {
-//     Console.WriteLine(name);  // Should show something like YourProject.Inputs.first_names.csv
-// }
+// Debug.WriteLine("ListWithResort: " + caseOne.ListWithResort().Count);
+// caseOne.GlobalCleanup();
+// caseOne.Setup();
+// Debug.WriteLine("ListWithoutResort: " + caseOne.ListWithoutResort().Count);
+// caseOne.GlobalCleanup();
+// caseOne.Setup();
+// caseOne.SortedSetSetup();
+// Debug.WriteLine("WithSortedSet: " + caseOne.WithSortedSet().Count);
 
 BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
