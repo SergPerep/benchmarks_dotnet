@@ -1,17 +1,18 @@
 using System.Text;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 
 namespace Benchmarks.Cases
 {
     public class ArrayAndList
     {
         public int dataSetSize = 1_000_000;
-        public Random random = new Random();
+        public Random random = new();
         public string letters = "ABCDEFGHIGKLMNOPQRSTUVWXWZ";
         public string numbers = "0123456789";
 
-        public Transaction[] transactionArray;
-        public List<Transaction> transactionList;
+        public Transaction[] transactionArray = Array.Empty<Transaction>();
+        public List<Transaction> transactionList = new();
         [GlobalSetup]
         public void Setup()
         {
@@ -82,7 +83,7 @@ namespace Benchmarks.Cases
 
         public class Transaction
         {
-            public string accountNumber;
+            public string accountNumber = "";
             public DateTime date;
             public int amount;
         }

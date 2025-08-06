@@ -9,8 +9,7 @@ Intel Core i5-3210M CPU 2.50GHz (Ivy Bridge), 1 CPU, 4 logical and 2 physical co
 InvocationCount=1  UnrollFactor=1  
 
 ```
-| Method                    | Mean            | Error         | StdDev        |
-|-------------------------- |----------------:|--------------:|--------------:|
-| WithResort                | 3,745,282.12 μs | 23,668.768 μs | 20,981.746 μs |
-| WithBinarySearchAndInsert |     5,204.01 μs |    102.536 μs |    225.069 μs |
-| WithSortedSet             |        42.60 μs |      1.166 μs |      3.211 μs |
+| Method                    | Mean         | Error      | StdDev     | Median       |
+|-------------------------- |-------------:|-----------:|-----------:|-------------:|
+| WithResort                | 3,881.417 ms | 24.0758 ms | 22.5205 ms | 3,871.134 ms |
+| WithBinarySearchAndInsert |     5.207 ms |  0.1038 ms |  0.2385 ms |     5.115 ms |

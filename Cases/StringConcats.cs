@@ -11,7 +11,7 @@ namespace Benchmarks.Cases
         [GlobalSetup]
         public void Setup()
         {
-            int targetCount = 300;
+            int targetCount = 10_000;
             CSVReader reader = new();
 
             while (true)
@@ -46,20 +46,20 @@ namespace Benchmarks.Cases
             foreach (Food foodItem in foods)
             {
                 insertQueries += $"\nINSERT INTO foods (name, protein, carbs, fat) VALUES ('{foodItem.name}', {foodItem.protein}, {foodItem.carbs}, {foodItem.fat});";
-                FeedBack(index);
+                // FeedBack(index);
                 index++;
             }
             return insertQueries;
         }
         [Benchmark]
-        public string ConcatViaStringBuilder()
+        public string CombineWithStringBuilder()
         {
             StringBuilder sb = new("");
             int index = 0;
             foreach (Food foodItem in foods)
             {
                 sb.Append($"\nINSERT INTO foods (name, protein, carbs, fat) VALUES ('{foodItem.name}', {foodItem.protein}, {foodItem.carbs}, {foodItem.fat});");
-                FeedBack(index);
+                //FeedBack(index);
                 index++;
             }
 

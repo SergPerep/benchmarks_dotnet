@@ -6,12 +6,12 @@ namespace Benchmarks.Cases
     public class InsertWithoutResort
     {
         private static Random _random = new();
-        public List<string> foodList = [];
+        public List<string> foodList = new();
         // [Params([1_000_000, 100_000, 10_000, 1_000])]
         public int n = 1_000_000;
-        private List<string> _original_data = [];
+        private List<string> _original_data = new();
         private const string itemToAdd = "Almonds";
-        public SortedSet<string> foodSortedSet = [];
+        public SortedSet<string> foodSortedSet = new();
 
         [GlobalSetup]
         public void GlobalSetup()
@@ -25,7 +25,7 @@ namespace Benchmarks.Cases
         [IterationSetup]
         public void IterationSetup()
         {
-            foodList = [.. _original_data];
+            foodList = new(_original_data);
         }
 
         [IterationCleanup]
@@ -35,11 +35,11 @@ namespace Benchmarks.Cases
             foodSortedSet.Clear();
         }
 
-        [IterationSetup(Target = nameof(WithSortedSet))]
-        public void IterationSetupWithSortedSet()
-        {
-            foodSortedSet = [.. _original_data]; 
-        }
+        // [IterationSetup(Target = nameof(WithSortedSet))]
+        // public void IterationSetupWithSortedSet()
+        // {
+        //     foodSortedSet = [.. _original_data]; 
+        // }
 
         [GlobalCleanup]
         public void GlobalCleanup()
@@ -65,12 +65,12 @@ namespace Benchmarks.Cases
             }
             return foodList;
         }
-        [Benchmark]
-        public SortedSet<string> WithSortedSet()
-        {
-            foodSortedSet.Add(itemToAdd);
-            return foodSortedSet;
-        }
+        // [Benchmark]
+        // public SortedSet<string> WithSortedSet()
+        // {
+        //     foodSortedSet.Add(itemToAdd);
+        //     return foodSortedSet;
+        // }
 
         public static string GenerateString(int length)
         {
